@@ -172,10 +172,7 @@ accuracyRow = (d3.map(currData, function(d){return(d.accuracy    )})).map(Number
     }, {
       name: 'max_parity_ratio',
       data: mprRow
-    }, {
-        name: 'max_parity_ratio',
-        data: mprRow
-      }, {
+    },  {
         name: 'equalized_odds_diff',
         data: eoRow
       }, {
