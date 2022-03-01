@@ -12,6 +12,14 @@ body {
 }
 
 
+#demoo a{
+    color:#00629B;
+}
+
+#demoo a:hover{
+    color:#7bc0e7;
+    text-decoration: none;
+}
 /*--- NAV */
 
 #nav-wrapper {

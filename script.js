@@ -26,7 +26,7 @@ window.onload = function () {
 
     d3.csv('./fairness_df.csv').then(data => {
       ultData = data
-      // console.log(ultData)
+      console.log(ultData)
       Highcharts.setOptions({
         lang: {    
           thousandsSep: ','
@@ -59,6 +59,7 @@ window.onload = function () {
 function changeContent(datasetName) {
     console.log("Chnaging content to dataset name: " + datasetName);
 
+    //must add column names 'dataset' and 'model'
     if(datasetName == 'all') {
         //continue
         currData = ultData
@@ -303,48 +304,3 @@ accuracyRow = (d3.map(currData, function(d){return(d.accuracy    )})).map(Number
 //   });
   
   
-  // Add mouse and touch events for rotation
-  (function (H) {
-    function dragStart(eStart) {
-      eStart = chart.pointer.normalize(eStart);
-  
-      var posX = eStart.chartX,
-        posY = eStart.chartY,
-        alpha = chart.options.chart.options3d.alpha,
-        beta = chart.options.chart.options3d.beta,
-        sensitivity = 5,  // lower is more sensitive
-        handlers = [];
-  
-      function drag(e) {
-        // Get e.chartX and e.chartY
-        e = chart.pointer.normalize(e);
-  
-        chart.update({
-          chart: {
-            options3d: {
-              alpha: alpha + (e.chartY - posY) / sensitivity,
-              beta: beta + (posX - e.chartX) / sensitivity
-            }
-          }
-        }, undefined, undefined, false);
-      }
-  
-      function unbindAll() {
-        handlers.forEach(function (unbind) {
-          if (unbind) {
-            unbind();
-          }
-        });
-        handlers.length = 0;
-      }
-  
-      handlers.push(H.addEvent(document, 'mousemove', drag));
-      handlers.push(H.addEvent(document, 'touchmove', drag));
-  
-  
-      handlers.push(H.addEvent(document, 'mouseup', unbindAll));
-      handlers.push(H.addEvent(document, 'touchend', unbindAll));
-    }
-    H.addEvent(chart.container, 'mousedown', dragStart);
-    H.addEvent(chart.container, 'touchstart', dragStart);
-  }(Highcharts));
