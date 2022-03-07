@@ -88,7 +88,15 @@ mprRow = (d3.map(currData, function(d){return(d.max_parity_ratio)})).map(Number)
 console.log(mprRow)
 eoRow = (d3.map(currData, function(d){return(d.equalized_odds_diff)})).map(Number)
 srRow = (d3.map(currData, function(d){return(d.selection_rate )})).map(Number)
-accuracyRow = (d3.map(currData, function(d){return(d.accuracy    )})).map(Number)
+accuracyRow = (d3.map(currData, function(d){return(d.accuracy_range  )})).map(Number)
+accuracy2Row = (d3.map(currData, function(d){return(d.overall_accuracy  )})).map(Number)
+recall_range = (d3.map(currData, function(d){return(d.recall_range  )})).map(Number)
+brier_score_range = (d3.map(currData, function(d){return(d.brier_score_range  )})).map(Number)
+f1 = (d3.map(currData, function(d){return(d.F1  )})).map(Number)
+
+
+// model	accuracy_range	max_parity_ratio	equalized_odds_diff	overall_accuracy
+	// FPR	F1	recall_range	brier_score_range
 
 
 
@@ -180,12 +188,25 @@ accuracyRow = (d3.map(currData, function(d){return(d.accuracy    )})).map(Number
         name: 'selection rate',
         data: srRow
       }, {
-        name: 'accuracy',
+        name: 'accuracy range',
         data: accuracyRow
+      }, {
+        name: 'overall accuracy',
+        data: accuracy2Row
+      },
+      {
+        name: 'recall range',
+        data: recall_range
+      }, {
+        name: 'brier score range',
+        data: brier_score_range
+      }, {
+        name: 'F1 range',
+        data: f1
       },
 
 
-    
+
     // , {
     //   name: 'equalized_odds_diff',
     //   data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
